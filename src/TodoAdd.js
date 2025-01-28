@@ -1,8 +1,8 @@
 function TodoAdd () {
     return (
         <form>
-            <input type="text" placeholder="Add a todo..." />
-            <button type="submit">Add</button>
+            <input type="text" placeholder="Escribe la tarea" />
+            <button type="submit" className="button-primary">Agregar</button>
         </form>
     );
 }

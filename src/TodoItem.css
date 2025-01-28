@@ -1,7 +1,7 @@
-li {
+.todo-list li {
+    position: relative;
     display: flex;
     flex-direction: row;
-    list-style: none;
     border: 1px solid #0081cc;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -9,4 +9,30 @@ li {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     padding: 10px 2%;
+    color: #bad8e9;
+    font-weight: 400;
+    transition: var(--mainTransition);
+    -webkit-transition: var(--mainTransition);
+    -moz-transition: var(--mainTransition);
+    -ms-transition: var(--mainTransition);
+    -o-transition: var(--mainTransition);
+    cursor: pointer;
+}
+
+.todo-list li:hover{
+    background: linear-gradient(to right, rgba(0, 129, 204, 0.61), rgba(0, 146, 230, 0.623));
+    color: #ffffff;
+}
+
+li button{
+    position: absolute;
+    right: 1%;
+    background-color: transparent;
+    border: none;
+}
+
+.todo-item-completed{
+    text-decoration: line-through;
+    color: #ffffff;
+    font-weight: 500;
 }

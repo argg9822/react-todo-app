@@ -1,0 +1,6 @@
+.todo-categories{
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    margin-bottom: 20px;
+}
