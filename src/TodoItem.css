@@ -33,6 +33,6 @@ li button{
 
 .todo-item-completed{
     text-decoration: line-through;
-    color: #ffffff;
+    color: #00cc88;
     font-weight: 500;
 }

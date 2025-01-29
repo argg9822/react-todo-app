@@ -20,6 +20,7 @@ const defaultTodos = [
   { id: 8, title: 'Take a nap', completed: false, category: 'home' },
   { id: 9, title: 'Visit family', completed: false, category: 'home' },
   { id: 10, title: 'Read a book', completed: true, category: 'school' },
+  { id: 11, title: 'Aprender programación', completed: false, category: 'work' },
 ];
 
 const categories = [
@@ -34,6 +35,12 @@ function App() {
 
   const countTodosDone = todos.filter(todo => todo.completed).length;
   const countTodosPending = todos.filter(todo => !todo.completed).length;
+
+  const filteredTodos = todos.filter(todo =>  {
+    const todoLowerCase = todo.title.toLocaleLowerCase();
+    const filterValueLowerCase = filterValue.toLocaleLowerCase();
+    return todoLowerCase.includes(filterValueLowerCase);
+  });
   
   return (
     <>
@@ -51,9 +58,9 @@ function App() {
         </CategoryList>
 
         <TodoList>
-          { defaultTodos.map(todo => {
+          { filteredTodos.map(todo => {
             return (
-              <TodoItem key={todo.id} title={todo.title} completed={todo.completed} />
+              <TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} setTodos={setTodos}/>
             );
           }) }
         </TodoList>
