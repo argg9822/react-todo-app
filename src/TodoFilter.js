@@ -1,8 +1,8 @@
 import React from 'react';
 import './TodoFilter.css';
 
-function TodoFilter () {
-    const [filterValue, setFilterValue] = React.useState('');
+function TodoFilter ({ filterValue, setFilterValue}) {
+    
     return (
       <form>
         <input type="text" placeholder="Buscar..."

@@ -6,9 +6,10 @@ import { TodoAdd } from './TodoAdd';
 import { TodoOptions } from './TodoOptions';
 import { CategoryList } from './CategoryList';
 import { CategoryItem } from './CategoryItem';
+import React from'react';
 import './index.css';
 
-const todos = [
+const defaultTodos = [
   { id: 1, title: 'Buy groceries', completed: false, category: 'home' },
   { id: 2, title: 'Clean the house', completed: true, category: 'home' },
   { id: 3, title: 'Do laundry', completed: false, category: 'home' },
@@ -27,14 +28,17 @@ const categories = [
   {id: 3, name: 'school'}
 ];
 
-const countTodosDone = todos.filter(todo => todo.completed).length;
-const countTodosPending = todos.filter(todo => !todo.completed).length;
-
 function App() {
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [filterValue, setFilterValue] = React.useState('');
+
+  const countTodosDone = todos.filter(todo => todo.completed).length;
+  const countTodosPending = todos.filter(todo => !todo.completed).length;
+  
   return (
     <>
       <TodoCounter pending={countTodosPending} done={countTodosDone}/>
-      <TodoFilter />
+      <TodoFilter filterValue={filterValue} setFilterValue={setFilterValue}/>
       {/* <TodoAdd /> */}
 
       <TodoOptions>
@@ -47,7 +51,7 @@ function App() {
         </CategoryList>
 
         <TodoList>
-          { todos.map(todo => {
+          { defaultTodos.map(todo => {
             return (
               <TodoItem key={todo.id} title={todo.title} completed={todo.completed} />
             );
