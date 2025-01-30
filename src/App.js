@@ -6,7 +6,7 @@ import { TodoAdd } from './TodoAdd';
 import { TodoOptions } from './TodoOptions';
 import { CategoryList } from './CategoryList';
 import { CategoryItem } from './CategoryItem';
-import React from'react';
+import React from 'react';
 import './index.css';
 
 const defaultTodos = [
@@ -23,6 +23,8 @@ const defaultTodos = [
   { id: 11, title: 'Aprender programación', completed: false, category: 'work' },
 ];
 
+localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+
 const categories = [
   {id: 1, name: 'home'},
   {id: 2, name: 'work'},
@@ -30,7 +32,8 @@ const categories = [
 ];
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const todosLocalStorage = JSON.parse(localStorage.getItem('TODOS_V1'));
+  const [todos, setTodos] = React.useState(todosLocalStorage);
   const [filterValue, setFilterValue] = React.useState('');
 
   const countTodosDone = todos.filter(todo => todo.completed).length;
@@ -41,12 +44,26 @@ function App() {
     const filterValueLowerCase = filterValue.toLocaleLowerCase();
     return todoLowerCase.includes(filterValueLowerCase);
   });
+
+  const completeTodo = (todoId) => {
+    const todoIndex = todos.findIndex(todo => todo.id === todoId);
+    const newTodos = [...todos];
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos);
+  }
+
+  const deleteTodo = (todoId) => {
+    const todoIndex = todos.findIndex(todo => todo.id === todoId);
+    const newTodos = [...todos];
+    newTodos.splice(todoIndex, 1);
+
+    setTodos(newTodos);
+  }
   
   return (
     <>
       <TodoCounter pending={countTodosPending} done={countTodosDone}/>
       <TodoFilter filterValue={filterValue} setFilterValue={setFilterValue}/>
-      {/* <TodoAdd /> */}
 
       <TodoOptions>
         <CategoryList>
@@ -60,10 +77,19 @@ function App() {
         <TodoList>
           { filteredTodos.map(todo => {
             return (
-              <TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} setTodos={setTodos}/>
+              <TodoItem 
+                key={todo.id}
+                id={todo.id}
+                title={todo.title}
+                completed={todo.completed}
+                onCompleted={() => {completeTodo(todo.id)}}
+                onDeleted={() => {deleteTodo(todo.id)}}
+                setTodos={setTodos}/>
             );
           }) }
         </TodoList>
+        {/* <TodoAdd /> */}
+
       </TodoOptions>
     </>
   );
