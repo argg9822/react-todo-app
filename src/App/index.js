@@ -1,13 +1,8 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoFilter } from './TodoFilter';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { TodoAdd } from './TodoAdd';
-import { TodoOptions } from './TodoOptions';
-import { CategoryList } from './CategoryList';
-import { CategoryItem } from './CategoryItem';
 import React from 'react';
-import './index.css';
+import { AppUI } from './AppUI';
+import { useLocalStorage } from '../App/useLocalStorage';
+
+import '../index.css';
 
 const defaultTodos = [
   { id: 1, title: 'Buy groceries', completed: false, category: 'home' },
@@ -23,8 +18,6 @@ const defaultTodos = [
   { id: 11, title: 'Aprender programación', completed: false, category: 'work' },
 ];
 
-localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-
 const categories = [
   {id: 1, name: 'home'},
   {id: 2, name: 'work'},
@@ -32,8 +25,7 @@ const categories = [
 ];
 
 function App() {
-  const todosLocalStorage = JSON.parse(localStorage.getItem('TODOS_V1'));
-  const [todos, setTodos] = React.useState(todosLocalStorage);
+  const [todos, setTodos] = useLocalStorage('TODOS_V1', defaultTodos);
   const [filterValue, setFilterValue] = React.useState('');
 
   const countTodosDone = todos.filter(todo => todo.completed).length;
@@ -56,43 +48,20 @@ function App() {
     const todoIndex = todos.findIndex(todo => todo.id === todoId);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-
     setTodos(newTodos);
   }
-  
+
   return (
-    <>
-      <TodoCounter pending={countTodosPending} done={countTodosDone}/>
-      <TodoFilter filterValue={filterValue} setFilterValue={setFilterValue}/>
-
-      <TodoOptions>
-        <CategoryList>
-          { categories.map(category => {
-            return (
-              <CategoryItem key={category.id} name={category.name} />
-            );
-          }) }
-        </CategoryList>
-
-        <TodoList>
-          { filteredTodos.map(todo => {
-            return (
-              <TodoItem 
-                key={todo.id}
-                id={todo.id}
-                title={todo.title}
-                completed={todo.completed}
-                onCompleted={() => {completeTodo(todo.id)}}
-                onDeleted={() => {deleteTodo(todo.id)}}
-                setTodos={setTodos}/>
-            );
-          }) }
-        </TodoList>
-        {/* <TodoAdd /> */}
-
-      </TodoOptions>
-    </>
-  );
+    <AppUI
+      categories={categories}
+      setFilterValue={setFilterValue}
+      countTodosDone={countTodosDone}
+      countTodosPending={countTodosPending}
+      filteredTodos={filteredTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
+  )
 }
 
 export default App;

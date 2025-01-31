@@ -1,6 +1,6 @@
 import './CategoryList.css';
 
-function CategoryList (props){
+function TodoCategory (props){
     return (
         <div className="todo-categories flex-between">
         {props.children}
@@ -8,4 +8,4 @@ function CategoryList (props){
     );
 }
 
-export { CategoryList };
+export { TodoCategory };

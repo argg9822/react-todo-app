@@ -1,4 +1,4 @@
-import { TodoIcon } from './TodoIcon';
+import { TodoIcon } from '../TodoIcon';
 import './TodoItem.css';
 
 function TodoItem (props) {

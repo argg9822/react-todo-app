@@ -1,4 +1,4 @@
-import { ReactComponent as TodoIcon } from './TodoIcon';
+import { ReactComponent as TodoIcon } from './';
 
 function DeleteIcon(){
     return <TodoIcon type="delete" />
