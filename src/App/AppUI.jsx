@@ -1,53 +1,72 @@
+import React from 'react';
 import { TodoCounter } from '../TodoCounter';
 import { TodoFilter } from '../TodoFilter';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
-// import { TodoAdd } from '../TodoAdd';
 import { TodoOptions } from '../TodoOptions';
 import { TodoCategory } from '../TodoCategory';
 import { CategoryItem } from '../TodoCategory/CategoryItem';
+import { TodoLoadingList } from '../TodoLoadingList';
+import { TodoContext } from '../TodoContext';
+import { TodoAddButton } from '../TodoAddButton';
 
-function AppUI (props) {
+import '../index.css';
+
+function AppUI () {
+    const {
+        loading,
+        error,
+        categories,
+        filteredTodos,
+        completeTodo,
+        deleteTodo
+    } = React.useContext(TodoContext);
+
     return (
         <>
-            <TodoCounter 
-                pending={props.countTodosPending} 
-                done={props.countTodosDone}
-            />
-            
-            <TodoFilter 
-                filterValue={props.filterValue} 
-                setFilterValue={props.setFilterValue}
-            />
-    
+            <TodoCounter />
+            <TodoFilter />
+
             <TodoOptions>
                 <TodoCategory>
-                { props.categories.map(category => {
-                    return (
-                    <CategoryItem key={category.id} name={category.name} />
-                    );
-                }) }
-                </TodoCategory>
-        
+                    { categories.map(category => {
+                        return (
+                        <CategoryItem key={category.id} name={category.name} />
+                        );
+                    }) }
+                </TodoCategory>   
+                             
                 <TodoList>
-                { props.filteredTodos.map(todo => {
-                    return (
-                    <TodoItem 
-                        key={todo.id}
-                        id={todo.id}
-                        title={todo.title}
-                        completed={todo.completed}
-                        onCompleted={() => {props.completeTodo(todo.id)}}
-                        onDeleted={() => {props.deleteTodo(todo.id)}}
-                        setTodos={props.setTodos}/>
-                    );
-                }) }
+                    { loading && 
+                        <>
+                            <TodoLoadingList/>
+                            <TodoLoadingList/>
+                            <TodoLoadingList/>
+                        </>
+                    }
+                    { error && 
+                        <p>Error al cargar la lista de TODOS</p> 
+                    }
+                    { !loading && filteredTodos.length === 0 && 
+                        <p>No hay TODOs para mostrar</p>
+                    }
+
+                    { filteredTodos.map(todo => {
+                        return (
+                        <TodoItem 
+                            key={todo.id}
+                            id={todo.id}
+                            title={todo.title}
+                            completed={todo.completed}
+                            onCompleted={() => {completeTodo(todo.id)}}
+                            onDeleted={() => {deleteTodo(todo.id)}}
+                        />
+                        );
+                    }) }
                 </TodoList>
-                {/* <TodoAdd /> */}
-        
             </TodoOptions>
         </>
-      );
+    );
 }
 
 export { AppUI };

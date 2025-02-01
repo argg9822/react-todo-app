@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header .loading-title{
+    width: 30%;
+    margin-top: 10px;
+}
+
+.header .loading-subtitle{
+    width: 20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header .loading-title,
+.header .loading-subtitle {
+    height: 20px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 75%);
+    background-size: 200% 100%;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    animation: loading-title 2s infinite linear;
+}
+
+@keyframes loading-title {
+    0% { background-position: 200% 0%; }
+    100% { background-position: -200% 0%; }
+}

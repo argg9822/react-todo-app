@@ -1,0 +1,74 @@
+.skeleton-loading-todo{
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #ffffff5b;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    animation: skeleton-todo-list 2s infinite linear;
+    -webkit-animation: skeleton-todo-list 2s infinite linear;
+    padding: 10px 2%;
+    margin-top: 2%;
+}
+
+.skeleton-loading-todo:nth-child(1){
+    margin-top: 0;
+}
+
+.skeleton-name{
+    display: block;
+    width: 50%;
+    height: 20px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    -webkit-animation: skeleton-todo-items 1.5s infinite linear;
+}
+
+.skeleton-button{
+    position: absolute;
+    right: 2%;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.2) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-animation: skeleton-todo-items 1.5s infinite;
+}
+
+@keyframes skeleton-todo-list {
+    0% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+@keyframes skeleton-todo-items {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+

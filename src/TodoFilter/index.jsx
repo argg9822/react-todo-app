@@ -1,8 +1,9 @@
 import React from 'react';
 import './TodoFilter.css';
+import { TodoContext } from '../TodoContext';
 
-function TodoFilter ({ filterValue, setFilterValue}) {
-    
+function TodoFilter () {
+    const { filterValue, setFilterValue } = React.useContext(TodoContext);
     return (
       <div className='filter-container'>
         <input type="text" placeholder="Buscar..."

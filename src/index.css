@@ -109,6 +109,11 @@ input:focus{
   justify-content: space-between;
 }
 
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-link{
   color: #9eb8dd;
   font-size: 1.2rem;
@@ -161,4 +166,6 @@ input:focus{
 
 .todo-options{
   margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
