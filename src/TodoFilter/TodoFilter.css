@@ -1,3 +1,8 @@
 .filter-container {
+    padding: 2%;
     text-align: center;
+}
+
+.filter-todo{
+    width: 70%;
 }

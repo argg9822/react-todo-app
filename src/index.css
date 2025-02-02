@@ -1,8 +1,11 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: content-box;
   --mainTransition: all 0.3s linear;
   --primaryColor: #0081cc;
+  --borderPrimary: 1px solid #0081cc;
+  --paddingDefault: 15px 1.2rem;
 }
 
 body {
@@ -25,11 +28,13 @@ code {
 h2{
   font-size: 1.8rem;
   color: #9eb8dd;
+  margin-bottom: 10px;
 }
 
 h6{
   font-size: 1.5rem;
   color: #fafcff;
+  margin-bottom: 10px;
 }
 
 .header{
@@ -37,20 +42,51 @@ h6{
   text-align: center;
 }
 
-input[type="text"] {
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2{
+  margin-top: 1rem;
+}
+
+.mt-3{
+  margin-top: 1.5rem;
+}
+
+.mb-1{
+  margin-bottom: 0.5rem;
+}
+
+.mb-2{
+  margin-bottom: 1rem;
+}
+
+.mb-3{
+  margin-bottom: 1.5rem;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="number"]{
+  padding: var(--paddingDefault);
+  font-size: 1.2rem;
   color: #ffffff;
   background-color: transparent;
-  width: 60rem;
-  height: 30px;
+  border: var(--borderPrimary);
   border-radius: 30px !important;
   -webkit-border-radius: 30px !important;
   -moz-border-radius: 30px !important;
   -ms-border-radius: 30px !important;
   -o-border-radius: 30px !important;
-  border: 1px solid #0081cc;
-  padding: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
   text-align: center;
-  font-size: 1.2rem;
 }
 
 input[type="checkbox"] {
@@ -71,25 +107,91 @@ li{
   list-style: none;
 }
 
-.btn{
+button,
+select {
   cursor: pointer;
 }
 
-.button-primary {
-  width: 30rem;
+select{
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  border: var(--borderPrimary);
+  color: #ffffff;
+  background-color: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  -webkit-transition: background-color 0.3s ease, transform 0.2s ease;
+  -moz-transition: background-color 0.3s ease, transform 0.2s ease;
+  -ms-transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.select option {
+  background-color: #0a0a0a; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.btn{
   height: 30px;
-  border-radius: 30px !important;
-  -webkit-border-radius: 30px !important;
-  -moz-border-radius: 30px !important;
-  -ms-border-radius: 30px !important;
-  -o-border-radius: 30px !important;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border: none;
+  padding: 10px 1rem;
+  text-align: center;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  -webkit-transition: background-color 0.3s ease, transform 0.2s ease;
+  -moz-transition: background-color 0.3s ease, transform 0.2s ease;
+  -ms-transition: background-color 0.3s ease, transform 0.2s ease;
+  -o-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover{
+  transform: scale(1.05);
+}
+
+.btn-primary {
   background-color: #0081cc;
   color: #ffffff;
-  border: none;
-  padding: 10px;
-  text-align: center;
-  font-size: 1.2rem;
-  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0068b7;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-secondary{
+  background-color: #9eb8dd;
+  color: #000;
+}
+
+.btn-secondary:hover{
+  background-color: #87a8c2;
+}
+
+.btn-success {
+  background-color: #32c75b;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #2eb74a;
 }
 
 input:focus{
@@ -123,7 +225,7 @@ input:focus{
   -moz-transition: var(--mainTransition);
   -ms-transition: var(--mainTransition);
   -o-transition: var(--mainTransition);
-  padding: 6px 1rem;
+  padding: 10px 1rem;
   border: 1px solid transparent;
   border-bottom: 1px solid var(--primaryColor);
 }
@@ -165,7 +267,8 @@ input:focus{
 }
 
 .todo-options{
-  margin-top: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding-top: 1rem;
+  display: flex;
 }

@@ -12,7 +12,7 @@ function TodoItem (props) {
                     hidden
                 />
                 <p className={`${props.completed && `todo-item-completed`}`}>{props.title}</p>
-                <button className='btn' onClick={props.onDeleted}>
+                <button onClick={props.onDeleted}>
                     <TodoIcon type="delete"/>
                 </button>
             </li>

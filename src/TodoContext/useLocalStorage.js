@@ -1,9 +1,14 @@
 import React from 'react';
 
 const categoriesTodos = [
-  {id: 1, name: 'home'},
-  {id: 2, name: 'work'},
-  {id: 3, name: 'school'}
+  {id: 1, name: 'hogar'},
+  {id: 2, name: 'trabajo'},
+  {id: 3, name: 'escuela'},
+  {id: 4, name: 'personal'},
+  {id: 5, name: 'familia'},
+  {id: 6, name: 'compras'},
+  {id: 7, name: 'pasatiempos'},
+  {id: 8, name: 'otros'},
 ];
 
 function useLocalStorage(itemName, defaultValue){

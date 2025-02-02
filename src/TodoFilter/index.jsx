@@ -6,7 +6,7 @@ function TodoFilter () {
     const { filterValue, setFilterValue } = React.useContext(TodoContext);
     return (
       <div className='filter-container'>
-        <input type="text" placeholder="Buscar..."
+        <input type="text" className='filter-todo' placeholder="Buscar..."
           value={filterValue}
           onChange={(event) => {
             setFilterValue(event.target.value);

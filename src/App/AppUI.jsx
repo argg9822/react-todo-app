@@ -7,8 +7,10 @@ import { TodoOptions } from '../TodoOptions';
 import { TodoCategory } from '../TodoCategory';
 import { CategoryItem } from '../TodoCategory/CategoryItem';
 import { TodoLoadingList } from '../TodoLoadingList';
+import { Modal } from '../Modal';
+import { TodoAdd } from '../TodoAdd';
+import { TodoCallToAction } from '../TodoCallToAction';
 import { TodoContext } from '../TodoContext';
-import { TodoAddButton } from '../TodoAddButton';
 
 import '../index.css';
 
@@ -19,7 +21,8 @@ function AppUI () {
         categories,
         filteredTodos,
         completeTodo,
-        deleteTodo
+        deleteTodo,
+        openModal,        
     } = React.useContext(TodoContext);
 
     return (
@@ -35,7 +38,7 @@ function AppUI () {
                         );
                     }) }
                 </TodoCategory>   
-                             
+
                 <TodoList>
                     { loading && 
                         <>
@@ -48,10 +51,17 @@ function AppUI () {
                         <p>Error al cargar la lista de TODOS</p> 
                     }
                     { !loading && filteredTodos.length === 0 && 
-                        <p>No hay TODOs para mostrar</p>
+                        <>
+                            <TodoCallToAction/>
+                            {openModal && 
+                                <Modal>
+                                    <TodoAdd/>
+                                </Modal>
+                            }
+                        </>
                     }
 
-                    { filteredTodos.map(todo => {
+                    { !loading && filteredTodos.map(todo => {
                         return (
                         <TodoItem 
                             key={todo.id}

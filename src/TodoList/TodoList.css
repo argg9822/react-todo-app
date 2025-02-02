@@ -12,5 +12,6 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 45%;
+    margin-left: 10%;
+    width: 50%;
 }

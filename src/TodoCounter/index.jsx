@@ -4,8 +4,8 @@ import { TodoContext } from '../TodoContext';
 
 function TodoCounter () {
     const { countTodosPending, countTodosDone, loading } = React.useContext(TodoContext);
-    const h2Message = countTodosDone === 0 ? `¡Felicitaciones!` : `Tienes ${countTodosPending} tareas pendientes`;
-    const doneMessage = countTodosDone === 0 ? `¡No tienes tareas completadas!` : `has completado ${countTodosDone} tareas`;
+    const h2Message = countTodosPending === 0 ? `¡Felicitaciones!` : `Tienes ${countTodosPending} tareas pendientes`;
+    const doneMessage = countTodosDone === 0 ? `¡No tienes tareas completadas!` : `has completado ${countTodosDone}`;
 
     return (
         <div className='header'>

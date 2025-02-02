@@ -2,7 +2,7 @@ import './CategoryList.css';
 
 function TodoCategory (props){
     return (
-        <div className="todo-categories flex-between">
+        <div className="todo-categories">
         {props.children}
         </div>
     );

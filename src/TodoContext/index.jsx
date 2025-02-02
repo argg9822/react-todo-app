@@ -1,19 +1,21 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-// const defaultTodos = [
-//   { id: 1, title: 'Buy groceries', completed: false, category: 'home' },
-//   { id: 2, title: 'Clean the house', completed: true, category: 'home' },
-//   { id: 3, title: 'Do laundry', completed: false, category: 'home' },
-//   { id: 4, title: 'Study for exams', completed: true, category: 'school' },
-//   { id: 5, title: 'Make dinner', completed: false, category: 'home' },
-//   { id: 6, title: 'Code a project', completed: false, category: 'work' },
-//   { id: 7, title: 'Write a blog post', completed: false, category: 'work' },
-//   { id: 8, title: 'Take a nap', completed: false, category: 'home' },
-//   { id: 9, title: 'Visit family', completed: false, category: 'home' },
-//   { id: 10, title: 'Read a book', completed: true, category: 'school' },
-//   { id: 11, title: 'Aprender programación', completed: false, category: 'work' },
-// ];
+const defaultTodos = [
+  {id: 1, title: 'Comprar leche', category: 1, completed: false},
+  {id: 2, title: 'Pasear al perro', category: 2, completed: false},
+  {id: 3, title: 'Preparar la cena', category: 3, completed: false},
+  {id: 4, title: 'Hacer una lista de tareas', category: 4, completed: false},
+  {id: 5, title: 'Leer un libro', category: 5, completed: false},
+  {id: 6, title: 'Comprar víveres', category: 6, completed: false},
+  {id: 7, title: 'Jugar videojuegos', category: 7, completed: false},
+  {id: 8, title: 'Limpiar la casa', category: 8, completed: false},
+  {id: 9, title: 'Hacer ejercicio', category: 4, completed: false},
+  {id: 10, title: 'Cocinar la cena', category: 3, completed: false},
+  {id: 11, title: 'Salir a caminar', category: 2, completed: false},
+  {id: 12, title: 'Comprar un teléfono nuevo', category: 6, completed: false},
+  {id: 13, title: 'Practicar yoga', category: 7, completed: false},
+]
 
 const TodoContext = React.createContext();
 
@@ -24,8 +26,9 @@ function TodoProvider ({ children }){
         loading, 
         error, 
         categories
-    } = useLocalStorage('TODOS_V1', []);
+    } = useLocalStorage('TODOS_V1', defaultTodos);
     const [filterValue, setFilterValue] = React.useState('');
+    const [openModal, setOpenModal] = React.useState(false);
 
     const countTodosDone = todos.filter(todo => todo.completed).length;
     const countTodosPending = todos.filter(todo => !todo.completed).length;
@@ -50,6 +53,16 @@ function TodoProvider ({ children }){
         setTodos(newTodos);
     };
 
+    const addTodo = (todoName, todoCategoryId) => {
+        const newTodo = {
+            id: (todos.at(-1).id) + 1,
+            title: todoName,
+            category: todoCategoryId,
+            completed: false
+        };
+        setTodos([...todos, newTodo]);
+    };
+
     return (
         <TodoContext.Provider
             value={{
@@ -64,7 +77,10 @@ function TodoProvider ({ children }){
                 countTodosPending,
                 filteredTodos,
                 completeTodo,
-                deleteTodo
+                deleteTodo,
+                addTodo,
+                openModal,
+                setOpenModal
             }}
         >
             {children}
