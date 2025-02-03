@@ -54,14 +54,17 @@ function TodoProvider ({ children }){
     };
 
     const addTodo = (todoName, todoCategoryId) => {
+        const todoId = todos.length > 0 ? todos.at(-1).id + 1 : 1;
         const newTodo = {
-            id: (todos.at(-1).id) + 1,
+            id: todoId,
             title: todoName,
             category: todoCategoryId,
             completed: false
         };
         setTodos([...todos, newTodo]);
     };
+
+    const screenWidth = window.innerWidth;
 
     return (
         <TodoContext.Provider
@@ -80,7 +83,8 @@ function TodoProvider ({ children }){
                 deleteTodo,
                 addTodo,
                 openModal,
-                setOpenModal
+                setOpenModal,
+                screenWidth
             }}
         >
             {children}

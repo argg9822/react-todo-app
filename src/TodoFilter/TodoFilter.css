@@ -1,8 +1,18 @@
 .filter-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 2%;
     text-align: center;
 }
 
 .filter-todo{
     width: 70%;
+}
+
+@media (max-width: 768px){
+    .filter-container{
+        padding: 20px;
+    }
 }

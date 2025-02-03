@@ -1,0 +1,19 @@
+.span-add-todo{
+    position: absolute;
+    top: 5px;
+    z-index: -1000;
+    left: -30px;
+    width: 200px;
+    padding: var(--paddingDefault);
+    transition: var(--mainTransition);
+    -webkit-transition: var(--mainTransition);
+    -moz-transition: var(--mainTransition);
+    -ms-transition: var(--mainTransition);
+    -o-transition: var(--mainTransition);
+    color: rgba(0, 0, 0, 0);
+}
+
+.btn-add-todo:hover .span-add-todo{
+    color: rgb(255, 255, 255);
+    left: 25px;
+}

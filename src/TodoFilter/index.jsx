@@ -1,6 +1,7 @@
 import React from 'react';
 import './TodoFilter.css';
 import { TodoContext } from '../TodoContext';
+import { TodoAddButton } from '../TodoAddButton';
 
 function TodoFilter () {
     const { filterValue, setFilterValue } = React.useContext(TodoContext);
@@ -12,6 +13,8 @@ function TodoFilter () {
             setFilterValue(event.target.value);
           }} 
         />
+
+        <TodoAddButton/>
       </div>
     );
 }

@@ -22,7 +22,8 @@ function AppUI () {
         filteredTodos,
         completeTodo,
         deleteTodo,
-        openModal,        
+        openModal, 
+        screenWidth       
     } = React.useContext(TodoContext);
 
     return (
@@ -31,13 +32,15 @@ function AppUI () {
             <TodoFilter />
 
             <TodoOptions>
-                <TodoCategory>
+                {screenWidth > 760 && 
+                    <TodoCategory>
                     { categories.map(category => {
                         return (
                         <CategoryItem key={category.id} name={category.name} />
                         );
                     }) }
-                </TodoCategory>   
+                    </TodoCategory>   
+                }
 
                 <TodoList>
                     { loading && 
@@ -53,12 +56,13 @@ function AppUI () {
                     { !loading && filteredTodos.length === 0 && 
                         <>
                             <TodoCallToAction/>
-                            {openModal && 
-                                <Modal>
-                                    <TodoAdd/>
-                                </Modal>
-                            }
                         </>
+                    }
+
+                    {openModal && 
+                        <Modal>
+                            <TodoAdd/>
+                        </Modal>
                     }
 
                     { !loading && filteredTodos.map(todo => {
