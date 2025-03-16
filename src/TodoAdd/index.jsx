@@ -45,11 +45,10 @@ function TodoAdd (){
                 </div>
 
                 <div className='flex-column'>
-                    <button className="btn btn-success mb-1" title='Guardar'>
+                    <button type='submit' className="btn btn-success" title='Guardar'>
                         <FontAwesomeIcon icon={faFloppyDisk} size="lg" />
                     </button>
                     <button className="btn btn-secondary mt-1" 
-                        type='submit'
                         onClick={() => {setOpenModal(false)}}  
                         title='Cancelar'
                     >

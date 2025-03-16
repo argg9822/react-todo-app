@@ -1,28 +1,32 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
   --mainTransition: all 0.3s linear;
   --primaryColor: #0081cc;
   --borderPrimary: 1px solid #0081cc;
   --paddingDefault: 13px 1.2rem;
   --paddingMobileDefault: 10px 0.75rem;
+  --paddingMobileBtn: 8px 0.75rem;
   --bg-danger: #dc2626;
 }
 
-html {
-  font-size: 16px;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Arial', sans-serif;
-  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #0a192f;
-  padding: 20px 2rem;
   color: #fafcff;
+  font-size: 16px;
 }
 
 code {
@@ -151,14 +155,13 @@ select{
 }
 
 .select option {
-  background-color: #0a0a0a; /* Fondo oscuro */
-  color: #ffffff; /* Texto blanco */
+  background-color: #0a0a0a;
+  color: #ffffff;
   font-size: 1.2rem;
   padding: 10px;
 }
 
 .btn{
-  height: 30px;
   cursor: pointer;
   font-size: 1.2rem;
   border: none;
@@ -284,21 +287,16 @@ input:focus{
   display: flex;
   justify-content: center;
   padding-top: 1rem;
-  display: flex;
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-
   select,
   textarea,
   input[type="text"],
   input[type="password"],
   input[type="number"]{
     padding: var(--paddingMobileDefault);
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     border-radius: 20px !important;
     -webkit-border-radius: 20px !important;
     -moz-border-radius: 20px !important;
@@ -308,9 +306,10 @@ input:focus{
 
   body {
     padding: 1rem;
+    font-size: 14px;
   }
 
   .btn{
-    padding: var(--paddingMobileDefault);
+    padding: var(--paddingMobileBtn);
   }
 }

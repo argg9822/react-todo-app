@@ -18,6 +18,10 @@
     border-radius: 5px;
 }
 
+.modal-body{
+    width: 100%;
+}
+
 .modal-body form {
     background: radial-gradient(circle, rgba(30, 58, 138, 0.95) 40%, rgba(30, 58, 138, 0.4) 90%);
     padding: 3rem;
@@ -29,4 +33,16 @@
     text-align: center;
     position: relative;
     margin: auto;
+}
+
+@media(max-width:767px){
+    .modal-body form{
+        display: grid;
+        padding: 10px;
+    }
+
+    .modal-content{
+        padding: 0;
+        width: 90%;
+    }
 }
